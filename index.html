@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="대시보드">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>내 대시보드</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#222;--sub:#777;--line:#e6e1d6;--accent:#d9572b;--ok:#2f8a5b}
+@media (prefers-color-scheme: dark){:root{--bg:#1b1a18;--card:#262421;--ink:#eee;--sub:#9a958c;--line:#3a3732;--accent:#f07a4d;--ok:#5fc08a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.5}
+.wrap{max-width:880px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:24px;margin:0 0 2px}
+.date{color:var(--sub);font-size:14px;margin-bottom:20px}
+h2{font-size:15px;color:var(--sub);margin:28px 0 10px;letter-spacing:.02em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.focus{border-left:5px solid var(--accent)}
+.focus .tag{display:inline-block;background:var(--accent);color:#fff;font-size:12px;border-radius:6px;padding:2px 8px;margin-bottom:6px}
+.focus .big{font-size:18px;font-weight:700;margin:2px 0 6px}
+.focus ul{margin:6px 0 0;padding-left:18px;color:var(--sub);font-size:14px}
+.gates{display:flex;gap:4px;margin-top:12px}
+.gates span{flex:1;text-align:center;font-size:12px;padding:6px 0;border-radius:6px;background:var(--line);color:var(--sub)}
+.gates .done{background:var(--ok);color:#fff}
+.gates .now{background:var(--accent);color:#fff;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+a.app{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+a.app:active{transform:scale(.98)}
+a.app .ic{font-size:24px}
+a.app b{display:block;font-size:15px;margin-top:4px}
+a.app small{color:var(--sub);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:9px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.t{white-space:nowrap;color:var(--accent);font-weight:600;width:110px}
+.links a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>내 대시보드</h1>
+  <div class="date" id="today">2026년 10월 9일</div>
+
+  <h2>📌 지금 할 일</h2>
+  <div class="card focus">
+    <span class="tag">유튜브 · Gate 3 대본</span>
+    <div class="big">젯스타 한 번 탔다가 세 번 당했습니다</div>
+    <div style="font-size:14px">결항 · 기내짐 7kg · 수하물 지연 / 썸네일 「새벽 1시, 취소 메일」</div>
+    <ul>
+      <li>다음 할 일: 대본 쓰기 (아이 얼굴은 비공개)</li>
+      <li>매주 1편 출고 — 지난 편 「연락줄게요」 10/8 출고 완료</li>
+    </ul>
+    <div class="gates">
+      <span class="done">1 소재</span><span class="done">2 제목</span><span class="now">3 대본</span><span>4 촬영</span><span>5 편집</span><span>6 출고</span>
+    </div>
+  </div>
+
+  <h2>📱 내 앱</h2>
+  <div class="grid">
+    <a class="app" href="https://yeonheekim-prog.github.io/focus-app/"><div class="ic">⏱️</div><b>할일+집중</b><small>타이머</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/kairos-app/"><div class="ic">🌅</div><b>카이로스</b><small>루틴 기록</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/spending-brake/"><div class="ic">🛑</div><b>소비 브레이크</b><small>살까 말까 판정</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/weekly-menu/"><div class="ic">🍱</div><b>주간 식단</b><small>메뉴 자동 뽑기</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/outfit-app/"><div class="ic">👗</div><b>날씨 코디</b><small>오늘 뭐 입지</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/english-phrases/"><div class="ic">📝</div><b>영어 표현</b><small>저장+발음+퀴즈</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/speaking-app/"><div class="ic">🗣️</div><b>영어 말하기</b><small>말하기 연습</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/hanja-daily/"><div class="ic">🈷️</div><b>하루 한자</b><small>아이용</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/word-card-game/"><div class="ic">🃏</div><b>단어 카드</b><small>아이용</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/kids-journal/"><div class="ic">📸</div><b>질문 노트</b><small>기여 사진첩</small></a>
+    <a class="app" href="https://yeonheekim-prog.github.io/bin-dodge-game/"><div class="ic">🗑️</div><b>쓰레기통 피하기</b><small>게임</small></a>
+  </div>
+
+  <h2>🤖 자동으로 돌아가는 일</h2>
+  <div class="card">
+    <table>
+      <tr><td class="t">매일 8시</td><td>구글 알림 리포트 → 파일 + 노션</td></tr>
+      <tr><td class="t">매주 월 9시</td><td>인스타 저장 아카이브 총정리</td></tr>
+      <tr><td class="t">매주 토 7시</td><td>주간 주식 스크리너 (GWD 시트 포함)</td></tr>
+      <tr><td class="t">매주 토 9:50</td><td>신규 종목 트레이딩뷰 4조건 판정</td></tr>
+      <tr><td class="t">매달 1일</td><td>스킬 점검·중복 정리</td></tr>
+    </table>
+  </div>
+
+  <h2>🔗 자주 여는 곳</h2>
+  <div class="card links">
+    <table>
+      <tr><td class="t">유튜브</td><td><a href="https://studio.youtube.com/">유튜브 스튜디오</a></td></tr>
+      <tr><td class="t">노션</td><td><a href="https://www.notion.so/3c356df260968169b785fdaf40b1ae16">🇦🇺 채널기획</a> · <a href="https://www.notion.so/3bc56df2609681fd80beeea37e728986">구글 알림 허브</a></td></tr>
+      <tr><td class="t">주식</td><td><a href="https://kr.tradingview.com/chart/aBR8qKAa/">트레이딩뷰 주봉 레이아웃</a></td></tr>
+      <tr><td class="t">벤치마킹</td><td><a href="https://app.viewtrap.com/">뷰트랩</a></td></tr>
+    </table>
+  </div>
+</div>
+<script>
+try{var d=new Date(),w="일월화수목금토"[d.getDay()];document.getElementById("today").textContent=d.getFullYear()+"년 "+(d.getMonth()+1)+"월 "+d.getDate()+"일 ("+w+")";}catch(e){}
+</script>
+</body>
+</html>
