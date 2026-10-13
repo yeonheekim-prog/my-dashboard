@@ -119,13 +119,10 @@ function importBackup(txt){
     var k=ks[i],v=o.data[k],cur=null;
     try{cur=localStorage.getItem(k)}catch(e){}
     if(cur===v){skip++;continue}
-    if(cur!==null&&!confirm("["+(o.app||"앱")+"] "+k+"
-대시보드에도 이미 기록이 있어요.
-옮겨온 기록으로 바꿀까요? (취소하면 지금 기록 유지)")){skip++;continue}
+    if(cur!==null&&!confirm("["+(o.app||"앱")+"] "+k+"\n대시보드에도 이미 기록이 있어요.\n옮겨온 기록으로 바꿀까요? (취소하면 지금 기록 유지)")){skip++;continue}
     try{localStorage.setItem(k,v);done++}catch(e){alert("저장 공간이 부족해서 "+k+"를 못 옮겼어요.");}
   }
-  alert("["+(o.app||"앱")+"] "+done+"개 옮김"+(skip?", "+skip+"개 그대로":"")+".
-이제 대시보드에서 앱을 열면 기록이 보여요.");
+  alert("["+(o.app||"앱")+"] "+done+"개 옮김"+(skip?", "+skip+"개 그대로":"")+".\n이제 대시보드에서 앱을 열면 기록이 보여요.");
 }
 document.getElementById("impFile").onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){importBackup(r.result)};r.readAsText(f);this.value=""};
 document.getElementById("impBtn").onclick=function(){var t=document.getElementById("impText");if(t.value.trim())importBackup(t.value.trim());t.value=""};
