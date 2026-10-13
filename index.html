@@ -93,7 +93,43 @@ td.t{white-space:nowrap;color:var(--accent);font-weight:600;width:110px}
       <tr><td class="t">벤치마킹</td><td><a href="https://app.viewtrap.com/">뷰트랩</a></td></tr>
     </table>
   </div>
+
+  <h2>📦 기록 가져오기</h2>
+  <div class="card" style="font-size:14px">
+    <div>아이폰은 홈 화면 아이콘마다 저장 공간이 따로예요. <b>앱은 이 대시보드에서만 여세요.</b></div>
+    <ol style="margin:8px 0;padding-left:18px;color:var(--sub)">
+      <li>예전에 쓰던 앱 아이콘을 열고 왼쪽 아래 <b>📦 기록 옮기기</b> → "파일에 저장"</li>
+      <li>여기서 <b>파일 고르기</b>로 그 파일 선택 (앱마다 한 번씩)</li>
+      <li>다 옮겼으면 예전 앱 아이콘은 지워도 돼요</li>
+    </ol>
+    <input type="file" id="impFile" accept=".json,application/json" style="font-size:14px">
+    <details style="margin-top:8px"><summary style="color:var(--sub)">복사한 기록 붙여넣기</summary>
+      <textarea id="impText" rows="3" style="width:100%;margin-top:6px;font-size:13px"></textarea>
+      <button type="button" id="impBtn" style="margin-top:4px;font-size:14px">가져오기</button>
+    </details>
+  </div>
 </div>
+<script>
+try{localStorage.setItem("dashContainer","1")}catch(e){}
+function importBackup(txt){
+  var o;try{o=JSON.parse(txt)}catch(e){alert("기록 파일이 아니에요.");return}
+  if(!o||!o.data){alert("기록 파일이 아니에요.");return}
+  var done=0,skip=0,ks=Object.keys(o.data);
+  for(var i=0;i<ks.length;i++){
+    var k=ks[i],v=o.data[k],cur=null;
+    try{cur=localStorage.getItem(k)}catch(e){}
+    if(cur===v){skip++;continue}
+    if(cur!==null&&!confirm("["+(o.app||"앱")+"] "+k+"
+대시보드에도 이미 기록이 있어요.
+옮겨온 기록으로 바꿀까요? (취소하면 지금 기록 유지)")){skip++;continue}
+    try{localStorage.setItem(k,v);done++}catch(e){alert("저장 공간이 부족해서 "+k+"를 못 옮겼어요.");}
+  }
+  alert("["+(o.app||"앱")+"] "+done+"개 옮김"+(skip?", "+skip+"개 그대로":"")+".
+이제 대시보드에서 앱을 열면 기록이 보여요.");
+}
+document.getElementById("impFile").onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){importBackup(r.result)};r.readAsText(f);this.value=""};
+document.getElementById("impBtn").onclick=function(){var t=document.getElementById("impText");if(t.value.trim())importBackup(t.value.trim());t.value=""};
+</script>
 <script>
 try{var d=new Date(),w="일월화수목금토"[d.getDay()];document.getElementById("today").textContent=d.getFullYear()+"년 "+(d.getMonth()+1)+"월 "+d.getDate()+"일 ("+w+")";}catch(e){}
 </script>
